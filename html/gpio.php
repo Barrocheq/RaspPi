@@ -9,6 +9,7 @@
 		<h1>RaspberryPi Commander</h1>
 		<form method="post">
 				<?php
+					$array = array(14,15,18,23,24,25,8,7,12,16,20,21,2,3,4,17,27,22,10,9,11,5,6,13,19,26);
 					$a = 1;
 					$b = 1;
 					$c = 1;
@@ -16,6 +17,11 @@
 						echo '<div class="div'.$a.'">';
 						echo '<h2>Center '.$a.'</h2>';
 						while ($b <= 10) {
+							if (!in_array($c,$array)){
+								$b = $b +1;
+								$c = $c +1;
+								continue;
+							}
 							$var = exec("gpio -g read ".$c);
 							if((1-$var) == 0) {
 								echo '<button class="on" name="button'.$c.'">LED'.$c.'</button>';
