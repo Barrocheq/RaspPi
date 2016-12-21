@@ -40,8 +40,11 @@
 
 			if (isset($_POST['button'.$a]))
 			{
-				exec( "gpio -g mode ".$a" out");
-				exec("gpio -g write ".$a" 1");
+				echo $a;
+				$var = exec("gpio -g read ".$a);
+				$var = 1-$var;
+				exec( "gpio -g mode ".$a." out");
+				exec("gpio -g write ".$a." ".$var);
 			}
 			$a = $a +1;
 		}
