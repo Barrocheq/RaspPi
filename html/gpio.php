@@ -6,38 +6,40 @@
 		<title>Raspberry PI</title>
 	</head>
 	<body>
+		<h1>RaspberryPi Commander</h1>
 		<form method="post">
-			<table>
 				<?php
 					$a = 1;
 					$b = 1;
 					$c = 1;
-					while ($a <= 2) {
-						echo "<tr>";
-						while ($b <= 20) {
-							echo "<td>";
-							echo '<button name="button'.$c.'">LED'.$c.'</button>';
-							echo "</td>";
+					while ($a <= 4) {
+						echo '<div class="div'.$a.'">';
+						echo '<h2>Center '.$a.'</h2>';
+						while ($b <= 10) {
+							$var = exec("gpio -g read ".$c);
+							if((1-$var) == 0) {
+								echo '<button class="on" name="button'.$c.'">LED'.$c.'</button>';
+							} else {
+								echo '<button class="off" name="button'.$c.'">LED'.$c.'</button>';
+							}
+
 							$b = $b +1;
 							$c = $c +1;
 						}
-						echo "</tr>";
-						echo "\n";
 						$a = $a+1;
 						$b = 1;
+						echo '</div>';
 					}
 				 ?>
-			</table>
-	</forme>
-
+		</form>
 	</body>
 </html>
+
 
 
 <?php
 		$a = 1;
 		while ($a <= 40) {
-
 			if (isset($_POST['button'.$a]))
 			{
 				echo $a;

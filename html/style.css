@@ -1,15 +1,41 @@
-table{
-    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+body {
+    background : linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
 }
 
-td{
-    border: 1px solid black;
+h1 {
+    text-align: center;
+    margin-bottom: 3em;
 }
 
-button{
-    font-size: 20px;
-    background-color: #4CAF50  ; /* Green */
+h2 {
+    text-align: center;
 }
-/*body{
-  background-color: gray;
-}*/
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+div{
+
+    height: 30em;
+    display: flex;
+    flex-basis: 8%;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+button {
+    height: 3em;
+    border-radius: 10px;
+    border: 0;
+}
+
+.on {
+     background-color: #28B80E;
+}
+
+.off {
+    background-color: #C5032B;
+}
