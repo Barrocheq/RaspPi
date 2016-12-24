@@ -1,3 +1,19 @@
+<?php
+$a = 1;
+while ($a <= 40) {
+	if (isset($_GET['button'.$a]))
+	{
+		#echo $a;
+		$var = exec("gpio -g read ".$a);
+		$var = 1-$var;
+		exec( "gpio -g mode ".$a." out");
+		exec("gpio -g write ".$a." ".$var);
+	}
+	$a = $a +1;
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,7 +23,7 @@
 	</head>
 	<body>
 		<h1>RaspberryPi Commander</h1>
-		<form method="post">
+		<form method="get">
 				<?php
 					$array = array(14,15,18,23,24,25,8,7,12,16,20,21,2,3,4,17,27,22,10,9,11,5,6,13,19,26);
 					$a = 1;
@@ -37,23 +53,7 @@
 						echo '</div>';
 					}
 				 ?>
+				 <button name=F5> Refresh</button>
 		</form>
 	</body>
 </html>
-
-
-
-<?php
-		$a = 1;
-		while ($a <= 40) {
-			if (isset($_POST['button'.$a]))
-			{
-				echo $a;
-				$var = exec("gpio -g read ".$a);
-				$var = 1-$var;
-				exec( "gpio -g mode ".$a." out");
-				exec("gpio -g write ".$a." ".$var);
-			}
-			$a = $a +1;
-		}
-?>
